@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bankslips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exad name</th>
+      <th>Ddate</th>
+      <th>Amount</th>
+      <th>Aname</th>
+      <th>Fname</th>
+      <th>Cnic</th>
+      <th>Bank</th>
+      <th>Department</th>
+      <th>Purpose</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bankslips.each do |bankslip| %>
+      <tr>
+        <td><%= bankslip.exad_name %></td>
+        <td><%= bankslip.ddate %></td>
+        <td><%= bankslip.amount %></td>
+        <td><%= bankslip.aname %></td>
+        <td><%= bankslip.fname %></td>
+        <td><%= bankslip.cnic %></td>
+        <td><%= bankslip.bank_id %></td>
+        <td><%= bankslip.department_id %></td>
+        <td><%= bankslip.purpose_id %></td>
+        <td><%= link_to 'Show', bankslip %></td>
+        <td><%= link_to 'Edit', edit_bankslip_path(bankslip) %></td>
+        <td><%= link_to 'Destroy', bankslip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bankslip', new_bankslip_path %>

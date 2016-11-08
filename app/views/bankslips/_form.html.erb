@@ -1,0 +1,51 @@
+<%= form_for(@bankslip) do |f| %>
+  <% if @bankslip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bankslip.errors.count, "error") %> prohibited this bankslip from being saved:</h2>
+
+      <ul>
+      <% @bankslip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<table>
+  <tr>
+    <td>Applicant Name:</td>             <td><%= f.text_field :aname %></td>
+  </tr>
+  <tr>
+    <td>Father's Name:</td>              <td><%= f.text_field :fname %></td>
+  </tr>
+  <tr>
+    <td>CNIC No:</td>                    <td><%= f.text_field :cnic %></td>
+  </tr>
+  <tr>
+    <td>Select Department:</td>           <td><%= f.collection_select :department_id, Department.order(:dname), :id, :dname, prompt: true %></td>
+  </tr>
+  <tr>
+    <td>Select Purpose:</td>              <td><%= f.grouped_collection_select :purpose_id, Department.order(:dname), :purposes, :dname, :id, :pname, prompt: true %></td>
+  </tr>
+  <tr>
+    <td>Name of Exam/Admission:</td>      <td><%= f.text_field :exad_name %></td>
+  </tr>
+  <tr>
+    <td>Date:</td>                        <td><%= f.date_select :ddate %></td>
+  </tr>
+  <tr>
+    <td>Select Bank:</td>                 <td><%= f.collection_select :bank_id, Bank.order(:bname), :id, :bname, prompt: true %></td>
+  </tr>
+  <tr>
+    <td>Amount:</td>                      <td><%= f.number_field :amount %></td>
+  </tr>
+  <tr>
+    <td></td><td><%= f.submit %></td>
+  </tr>
+</table>
+
+
+    
+
+<% end %>

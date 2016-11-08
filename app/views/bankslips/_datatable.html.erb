@@ -1,0 +1,31 @@
+<div class="inner-body">
+<div class="uob-logo"><%= image_tag("/assets/uob.jpg", size: "50x50") %></div>
+<div class="challan-1">Challan No:</div> <div class="challan-2"><%= @bankslip.id %></div>
+<div class="UOB">University of Balochistan Quetta<br>
+<u>Computer Generated Deposit Slip</u>
+</div>
+<div class="fee-collection"><br><%= @bankslip.bank.bname %> Bank Fee Collection Account Number <br><%= @bankslip.bank.bacno %><br>
+University of Balochistan, Quetta Branch
+</div>
+
+<table>
+  <tr class="td">    <td>Applicant Name:</td>                    <td><%= @bankslip.aname.upcase %></td>                  </tr>
+  <tr>    <td>Father's Name:</td>                     <td><%= @bankslip.fname.upcase %></td>                  </tr>
+  <tr>    <td>CNIC No:</td>                           <td><%= @bankslip.cnic %></td>                          </tr>
+  <tr>    <td>Name of Exam<br> OR Admission:</td>     <td><%= @bankslip.exad_name %></td>                     </tr>
+  <tr>    <td>Department:</td>                        <td><%= @bankslip.department.dname %></td>              </tr>
+  <tr>    <td>Date:</td>                              <td><%= @bankslip.ddate.strftime("%d-%m-%Y") %></td>    </tr>
+  <tr>    <td class="amount">Amount:</td>             <td class="amount">Rs. <%= @bankslip.amount %>/=</td>   </tr>
+  <tr>    <td>Purpose:</td>                           <td><%= @bankslip.purpose.pname %></td>                 </tr>
+</table>
+<br><br><br>
+Depositer Signatures:__________________<br><br><br>
+Cashier:___________ Officer:___________<br><br><br><br>
+Bank Stamp:
+<br><br><br><br>
+<div class="notice">
+Note: Bank stamp is required on the deposit slip<br>
+The deposited Fee/Amount will Not be Refunded<br>
+Over-Writting or Any modification is Not Accepted
+</div>
+</div>
