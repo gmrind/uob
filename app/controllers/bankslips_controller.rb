@@ -10,6 +10,13 @@ class BankslipsController < ApplicationController
   # GET /bankslips/1
   # GET /bankslips/1.json
   def show
+    html = render_to_string(:layout => false , :action => 'show.html.erb')
+    kit = PDFKit.new(html, :encoding =>"UTF-8")
+    kit = PDFKit.new(html, :page_size =>"A4")
+    kit= PDFKit.new(html, root_url: 'http://onlineforms-gmrind.c9users.io')
+    PDFKit.new(html, protocol: 'https')
+    kit.stylesheets << "#{Rails.root.to_s}/app/assets/stylesheets/application.css"
+    #send_data(kit.to_pdf, :filename => "#{@bankslip.aname.titleize}_#{@bankslip.bank.bname}_bankslip.pdf", :type => 'application/pdf')
   end
 
   # GET /bankslips/new
@@ -30,6 +37,7 @@ class BankslipsController < ApplicationController
       if @bankslip.save
         format.html { redirect_to @bankslip, notice: 'Bankslip was successfully created.' }
         format.json { render :show, status: :created, location: @bankslip }
+        format.pdf  {send_data(kit.to_pdf, :filename => "#{@bankslip.aname.titleize}_#{@bankslip.bank.bname}_bankslip.pdf", :type => 'application/pdf')}
       else
         format.html { render :new }
         format.json { render json: @bankslip.errors, status: :unprocessable_entity }

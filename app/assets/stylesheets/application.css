@@ -1,15 +1,187 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap-datetimepicker';
+
+
+
+
+body {
+  font-family: verdana, Jameel Noori Nastaleeq, arial, helvetica, sans-serif;
+  font-size: 14px;
+}
+
+@font-face {
+    font-family: 'Jameel Noori Nastaleeq';
+    src:url('fonts/Jameel Noori Nastaleeq.eot');
+    src:url('fonts/Jameel Noori Nastaleeq.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Jameel Noori Nastaleeq.ttf') format('truetype'),
+        url('fonts/Jameel Noori Nastaleeq.woff') format('woff'),
+        url('fonts/Jameel Noori Nastaleeq.svg#Jameel Noori Nastaleeq') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}   
+
+@media print {
+
+  #container {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  
+  #line_items {
+    page-break-before: always;
+  }
+  
+  #pdf_link {
+    display: none;
+  }
+
+}
+
+
+.container {
+  width: 1500px;
+  margin: 0px;
+}
+.list-1 {
+  border-right: 2px solid black;
+  border-right-style: dashed;
+  border-bottom: 2px solid black;
+  border-bottom-style: dashed;
+  height: auto;
+  float: left;
+  padding: 15px;
+}
+.list-2 {
+  border-right: 2px solid black;
+  border-right-style: dashed;
+  border-bottom: 2px solid black;
+  border-bottom-style: dashed;
+  height: auto;
+  float: left;
+  padding: 15px;
+}
+.list-3 {
+  border-right: 2px solid black;
+  border-right-style: dashed;
+  border-bottom: 2px solid black;
+  border-bottom-style: dashed;
+  height: auto;
+  float: left;
+  padding: 15px;
+}
+.list-4 {
+  border-bottom: 2px solid black;
+  border-bottom-style: dashed;
+  height: auto;
+  float: left;
+  padding: 15px;
+}
+.table {
+  line-height: 30px;
+}
+.table td {
+  border-bottom: 1px solid gray;
+}
+.notice {
+  font-size: 12px;
+}
+.logo {
+  margin-left: 130px;
+  margin-top: 10px;
+}
+.logo-2 {
+  margin-left: 130px;
+}
+.uob-logo {
+  opacity: 0.1;
+  margin-left: 20px;
+}
+.challan {
+  text-decoration: underline;
+  margin-top: 10px;
+}
+.challan-no {
+  margin-top: -17px;
+  margin-left: 100px;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 12px;
+}
+.ubq {
+  margin-top: -270px;
+}
+.fee-collect {
+  line-height: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+}
+.deposit {
+  margin: 60px 0 35px 0;
+}
+.bank {
+  margin: 90px 0 80px 0;
+}
+
+.amount {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.print-command-2              { margin: 0 0 10px 450px; background-color: #7A0000; width: 380px; padding: 5px 5px 5px 10px; color: white;}
+.print-command-2 a            { color: white; text-decoration:none;}
+.print-command-2 a:hover      { text-decoration: underline;}
+/*-----------------Registration Area-----------------*/
+
+
+.reg-container {
+    background-image: url("/assets/registration1.jpg");
+    background-size: 1100px;
+    width: 1100px;
+    height: 730px;
+    background-repeat: no-repeat;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    font-size: 14px;
+}
+.otherpage {
+    background-image: url("/assets/registration2.jpg");
+    background-size: 1100px;
+    background-repeat: no-repeat;
+    width: 1100px;
+    height: 730px;
+    margin: 735px 0 0 0;
+    padding: 0px;
+}
+.sname                      { margin: 105px 0 0 150px; float: left;}
+.fname                      { margin: 105px 0 0 600px;}
+.dateofbirth                { margin: 10px 0 0 180px; float: left;}
+.nameofregistration         { margin: 10px 0 0 800px;}
+.nameofsubjects             { margin: 13px 0 0 222px; word-spacing: 75px;}
+.previous-registration-no   { margin: 13px 0 0 320px; float: left;}
+.board-university           { margin: 13px 0 0 745px;}
+.local-domicile             { margin: 12px 0 0 270px; float: left;}
+.religion                   { margin: 12px 0 0 150px; float: left;}
+.cnic-no                    { margin: 15px 0 0 701px; letter-spacing: 14px; font-size: 18px;}
+.permanent-address          { margin: 8px 0 0 225px; float: left; width: 380px; height: 32px; font-size: 13px;}
+.present_address            { margin: 8px 0 0 732px; width: 360px; height: 32px; font-size: 13px;}
+.challan_no                 { margin: -5px 0 0 460px; float: left;}
+.reg_amount                 { margin: -5px 0 0 670px;}
+.reg_date                   { margin: -18px 0 0 900px;}
+.examination                { margin: 63px 75px 0 240px; line-height: 27px; float: left;}
+.year                       { margin-right: 40px; float: left; width: 60px;}
+.annual_supply              { margin-right: 70px; float: left; width: 90px;}
+.roll_no                    { margin-right: 30px; float: left; width: 90px;}
+.division                   { margin-right: 25px; float: left; width: 110px;}
+.subject_pass               { margin-right: 0px; float: left; width: 145px;}
+.reg_date_2                 { margin: 370px 0 0 950px;}
+.reg_date_3                 { margin: -30px 0 0 650px;}
+.print-command              { margin: -690px 0 0 380px; background-color: #7A0000; width: 300px; padding: 5px 5px 5px 10px; color: white;}
+.print-command a            { color: white; text-decoration:none;}
+.print-command a:hover      { text-decoration: underline;}

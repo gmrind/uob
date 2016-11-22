@@ -1,36 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<ul>
-    <li class="list-1">
-        Depositer Copy - 1
-        <%= render 'datatable' %>
-    </li>
-    <li class="list-2">
-        Attached with Exam/Admission Form - 2
-        <%= render 'datatable' %>
-    </li>
-    <li class="list-3">
-        UoB Copy - 3
-        <%= render 'datatable' %>
-    </li>
-    <li class="list-4">
-        Bank Copy - 4
-        <%= render 'datatable' %>
-    </li>
-    
-</ul>
+<p class="print-command-2" id= "pdf_link">
+  <%= link_to "Click here to Print this Slip", '#', onclick: "printpage()" %> | 
+  <%= link_to "Go Back to Form Page", new_bankslip_path %>
+</p>
 
 
-
-
-
-
-
-
-
-
-
-<!--
-<%= link_to 'Edit', edit_bankslip_path(@bankslip) %> |
-<%= link_to 'Back', bankslips_path %>
--->
+<div class="container">
+  <div class="list-1">
+    Depositer Copy - 1
+    <%= render 'datatable' %>
+  </div>
+  <div class="list-2">
+    Attach with Exam/Admission etc Form - 2
+    <%= render 'datatable' %>
+  </div>
+  <div class="list-3">
+    UoB Copy - 3
+    <%= render 'datatable' %>
+  </div>
+  <div class="list-4">
+    Bank Copy - 4
+    <%= render 'datatable' %>
+  </div>
+</div>

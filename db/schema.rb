@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107185334) do
+ActiveRecord::Schema.define(version: 20161113201544) do
 
   create_table "banks", force: :cascade do |t|
     t.string   "bname"
@@ -40,11 +40,54 @@ ActiveRecord::Schema.define(version: 20161107185334) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "examinations", force: :cascade do |t|
+    t.string   "ename"
+    t.string   "year"
+    t.string   "annual_supply"
+    t.string   "roll_no"
+    t.string   "division"
+    t.string   "subject_pass"
+    t.string   "board_uni"
+    t.integer  "registration_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "purposes", force: :cascade do |t|
     t.string   "pname"
     t.integer  "department_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.string   "sname"
+    t.string   "fname"
+    t.date     "d_of_b"
+    t.string   "name_of_year_examination"
+    t.string   "previous_registration_no"
+    t.string   "board_university"
+    t.string   "local_domicile"
+    t.string   "religion"
+    t.string   "cnic_no"
+    t.text     "permanent_address"
+    t.text     "present_address"
+    t.string   "challan_no"
+    t.integer  "amount"
+    t.date     "registration_date"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "registrations_subjects", id: false, force: :cascade do |t|
+    t.integer "subject_id",      null: false
+    t.integer "registration_id", null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "subname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

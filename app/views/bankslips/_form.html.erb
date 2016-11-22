@@ -1,51 +1,48 @@
 <%= form_for(@bankslip) do |f| %>
   <% if @bankslip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bankslip.errors.count, "error") %> prohibited this bankslip from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <strong><%= pluralize(@bankslip.errors.count, "error") %> prohibited this bankslip from being saved:</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <ol>
       <% @bankslip.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
+      </ol>
     </div>
   <% end %>
 
 
 <table>
   <tr>
-    <td>Applicant Name:</td>             <td><%= f.text_field :aname %></td>
+    <td>Applicant Name:</td>             <td><%= f.text_field :aname, class:"form-control" %></td>
   </tr>
   <tr>
-    <td>Father's Name:</td>              <td><%= f.text_field :fname %></td>
+    <td>Father's Name:</td>              <td><%= f.text_field :fname, class:"form-control" %></td>
   </tr>
   <tr>
-    <td>CNIC No:</td>                    <td><%= f.text_field :cnic %></td>
+    <td>CNIC No:</td>                    <td><%= f.text_field :cnic, class:"form-control" %></td>
   </tr>
   <tr>
-    <td>Select Department:</td>           <td><%= f.collection_select :department_id, Department.order(:dname), :id, :dname, prompt: true %></td>
+    <td>Select Department:</td>           <td><%= f.collection_select :department_id, Department.order(:dname), :id, :dname, prompt: true, class:"form-control" %></td>
   </tr>
   <tr>
     <td>Select Purpose:</td>              <td><%= f.grouped_collection_select :purpose_id, Department.order(:dname), :purposes, :dname, :id, :pname, prompt: true %></td>
   </tr>
   <tr>
-    <td>Name of Exam/Admission:</td>      <td><%= f.text_field :exad_name %></td>
+    <td>Name of Exam/Admission:</td>      <td><%= f.text_field :exad_name, class:"form-control" %></td>
   </tr>
   <tr>
-    <td>Date:</td>                        <td><%= f.date_select :ddate %></td>
+    <td>Date:</td>                        <td><%= f.date_select :ddate, order: [:day, :month, :year], use_two_digit_numbers: true %></td>
   </tr>
   <tr>
     <td>Select Bank:</td>                 <td><%= f.collection_select :bank_id, Bank.order(:bname), :id, :bname, prompt: true %></td>
   </tr>
   <tr>
-    <td>Amount:</td>                      <td><%= f.number_field :amount %></td>
+    <td>Amount:</td>                      <td><%= f.text_field :amount, class:"form-control" %></td>
   </tr>
   <tr>
-    <td></td><td><%= f.submit %></td>
+    <td></td><td><%= f.submit "Generate Bankslip", class:"btn btn-primary" %></td>
   </tr>
 </table>
-
-
-    
 
 <% end %>

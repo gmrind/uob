@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  resources :subjects
+  resources :registrations
   resources :bankslips
   resources :purposes
   resources :departments
   resources :banks
 
-  root 'bankslips#new'
+  root 'registrations#new'
 
 
 
