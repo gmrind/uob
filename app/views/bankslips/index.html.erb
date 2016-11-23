@@ -30,7 +30,7 @@
         <td><%= bankslip.bank.bname %></td>
         <td><%= bankslip.department.dname %></td>
         <td><%= bankslip.purpose.pname %></td>
-        <td><%= link_to 'Show', bankslip %></td>
+        <td><%= link_to 'Show', bankslip, target: "()" %></td>
         <td><%= link_to 'Edit', edit_bankslip_path(bankslip) %></td>
         <td><%= link_to 'Destroy', bankslip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

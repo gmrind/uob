@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113201544) do
+ActiveRecord::Schema.define(version: 20161123201100) do
 
   create_table "banks", force: :cascade do |t|
     t.string   "bname"
@@ -32,7 +32,10 @@ ActiveRecord::Schema.define(version: 20161113201544) do
     t.integer  "purpose_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "slug"
   end
+
+  add_index "bankslips", ["slug"], name: "index_bankslips_on_slug"
 
   create_table "departments", force: :cascade do |t|
     t.string   "dname"
@@ -77,7 +80,10 @@ ActiveRecord::Schema.define(version: 20161113201544) do
     t.date     "registration_date"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "slug"
   end
+
+  add_index "registrations", ["slug"], name: "index_registrations_on_slug"
 
   create_table "registrations_subjects", id: false, force: :cascade do |t|
     t.integer "subject_id",      null: false

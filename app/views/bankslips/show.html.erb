@@ -1,3 +1,5 @@
+<% @title = "#{@bankslip.aname.titleize} s/o #{@bankslip.fname.titleize} #{@bankslip.purpose.pname} #{@bankslip.bank.bname} Bankslip" %>
+
 <p class="print-command-2" id= "pdf_link">
   <%= link_to "Click here to Print this Slip", '#', onclick: "printpage()" %> | 
   <%= link_to "Go Back to Form Page", new_bankslip_path %>
