@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'pages/index'
+
+  get 'pages/about'
+
+  get 'pages/services'
+
+  get 'pages/contact'
+
   resources :subjects
   resources :registrations
   resources :bankslips
@@ -6,7 +14,7 @@ Rails.application.routes.draw do
   resources :departments
   resources :banks
 
-  root 'registrations#new'
+  root 'pages#index'
 
 
 

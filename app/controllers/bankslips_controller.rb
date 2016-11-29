@@ -1,28 +1,25 @@
 class BankslipsController < ApplicationController
   before_action :set_bankslip, only: [:show, :edit, :update, :destroy]
 
-  # GET /bankslips
-  # GET /bankslips.json
   def index
     @bankslips = Bankslip.all
   end
 
-  # GET /bankslips/1
-  # GET /bankslips/1.json
   def show
+    if @bankslip 
+      render :show
+    else
+      redirect_to new_bankslip_path, alert: 'Worng bankslip URL...! Please create new bankslip.'
+    end
   end
 
-  # GET /bankslips/new
   def new
     @bankslip = Bankslip.new
   end
 
-  # GET /bankslips/1/edit
   def edit
   end
 
-  # POST /bankslips
-  # POST /bankslips.json
   def create
     @bankslip = Bankslip.new(bankslip_params)
 
@@ -38,8 +35,6 @@ class BankslipsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bankslips/1
-  # PATCH/PUT /bankslips/1.json
   def update
     respond_to do |format|
       if @bankslip.update(bankslip_params)
@@ -52,8 +47,6 @@ class BankslipsController < ApplicationController
     end
   end
 
-  # DELETE /bankslips/1
-  # DELETE /bankslips/1.json
   def destroy
     @bankslip.destroy
     respond_to do |format|
@@ -63,12 +56,10 @@ class BankslipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_bankslip
       @bankslip = Bankslip.find_by_slug(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def bankslip_params
       params.require(:bankslip).permit(:exad_name, :ddate, :amount, :aname, :fname, :cnic, :bank_id, :department_id, :purpose_id)
     end

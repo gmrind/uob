@@ -22,3 +22,9 @@ function printpage()
 {
    window.print()
 }
+
+  $(function () {
+      $('#datetimepicker10').datetimepicker({
+          format: 'DD-MM-YYYY'
+      });
+  });
