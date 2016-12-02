@@ -23,8 +23,14 @@ function printpage()
    window.print()
 }
 
-  $(function () {
-      $('#datetimepicker10').datetimepicker({
-          format: 'DD-MM-YYYY'
-      });
+$(function () {
+  $('#datetimepicker10').datetimepicker({
+    format: 'DD-MM-YYYY'
   });
+});
+
+$(function () {
+  $('#datetimepicker11').datetimepicker({
+    format: 'DD-MM-YYYY'
+  });
+});
