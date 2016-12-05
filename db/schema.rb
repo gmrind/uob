@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161123201100) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "banks", force: :cascade do |t|
     t.string   "bname"
     t.string   "bacno"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20161123201100) do
     t.string   "slug"
   end
 
-  add_index "bankslips", ["slug"], name: "index_bankslips_on_slug"
+  add_index "bankslips", ["slug"], name: "index_bankslips_on_slug", using: :btree
 
   create_table "departments", force: :cascade do |t|
     t.string   "dname"
@@ -83,7 +86,7 @@ ActiveRecord::Schema.define(version: 20161123201100) do
     t.string   "slug"
   end
 
-  add_index "registrations", ["slug"], name: "index_registrations_on_slug"
+  add_index "registrations", ["slug"], name: "index_registrations_on_slug", using: :btree
 
   create_table "registrations_subjects", id: false, force: :cascade do |t|
     t.integer "subject_id",      null: false
