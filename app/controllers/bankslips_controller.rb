@@ -2,14 +2,15 @@ class BankslipsController < ApplicationController
   before_action :set_bankslip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bankslips = Bankslip.all
+    @bankslips = Bankslip.search(params[:search])
+    #redirect_to new_bankslip_path
   end
 
   def show
     if @bankslip 
       render :show
     else
-      redirect_to new_bankslip_path, alert: 'Worng bankslip URL...! Please create new bankslip.'
+      redirect_to bankslips_path, alert: 'Worng bankslip URL...! Search your bankslip by typing your CNIC number or'
     end
   end
 
@@ -27,7 +28,7 @@ class BankslipsController < ApplicationController
       if @bankslip.save
         format.html { redirect_to @bankslip, notice: 'Bankslip was successfully created.' }
         format.json { render :show, status: :created, location: @bankslip }
-        format.pdf  {send_data(kit.to_pdf, :filename => "#{@bankslip.aname.titleize}_#{@bankslip.bank.bname}_bankslip.pdf", :type => 'application/pdf')}
+        #format.pdf  {send_data(kit.to_pdf, :filename => "#{@bankslip.aname.titleize}_#{@bankslip.bank.bname}_bankslip.pdf", :type => 'application/pdf')}
       else
         format.html { render :new }
         format.json { render json: @bankslip.errors, status: :unprocessable_entity }

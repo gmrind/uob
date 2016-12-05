@@ -1,39 +1,61 @@
-
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Bankslips</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Father's Name</th>
-      <th>Department</th>
-      <th>Purpose</th>
-      <th>Bank</th>
-      <th>Amount</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bankslips.each do |bankslip| %>
-      <tr>
-        <td><%= bankslip.aname %></td>
-        <td><%= bankslip.fname %></td>
-        <td><%= bankslip.department.dname %></td>
-        <td><%= bankslip.purpose.pname %></td>
-        <td><%= bankslip.bank.bname %></td>
-        <td><%= bankslip.amount %></td>
-        <td><%= link_to 'Show', bankslip %></td>
-        <td><%= link_to 'Edit', edit_bankslip_path(bankslip) %></td>
-        <td><%= link_to 'Destroy', bankslip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @title = "Search Your Bankslip" %>
+<h1>Search Your Bankslip</h1>
+<hr>
+<% if alert %>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= alert %> <%= link_to "Create New", new_bankslip_path, class: "btn btn-primary btn-xs" %>
+</div>
+<% end %>
+<div class="row">
+  <div class="col-lg-8">
+    <%= form_tag bankslips_path, :method => 'get' do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], placeholder: "Search by CNIC Only", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+      </span>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
+  </div>
+</div>
 <br>
-
-<%= link_to 'New Bankslip', new_bankslip_path %>
-
+<% if params[:search].present? %>
+  <% if @bankslips.present? %>
+  <div class="row">
+    <div class="well well-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>CNIC</th>
+            <th>Name</th>
+            <th>Father's Name</th>
+            <th>Purpose</th>
+            <th>Bank</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bankslips.each do |bankslip| %>
+            <tr>
+              <td><%= bankslip.cnic %></td>
+              <td><%= bankslip.aname.titleize %></td>
+              <td><%= bankslip.fname.titleize %></td>
+              <td><%= bankslip.purpose.pname %></td>
+              <td><%= bankslip.bank.bname %></td>
+              <td><%= link_to 'View Slip', bankslip_path(bankslip), class: "btn btn-primary btn-xs" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% else %>
+    <div class="alert alert-danger">No such result found with <b><%= params[:search] %></b>...!!! Search again with correct CNIC number.</div>
+  <% end %>
+<% else %>
+<% if alert.present? %>
+<% else %>
+  <div class="alert alert-info">Search your bankslip by typing your CNIC number without dashes.</div>
+<% end %>
+<% end %>

@@ -9,8 +9,17 @@ class Bankslip < ActiveRecord::Base
 
   def slug_candidates
     [
-      [:aname, "bankslip-no", :id]  
+      [:aname, :cnic]  
     ]
   end
-    validates_presence_of   :aname, :fname, :cnic
+    validates_presence_of   :aname, :fname, :cnic, :exad_name, :department_id, :purpose_id, :ddate, :bank_id, :amount
+    
+  def self.search(search)
+    if search
+      where('cnic LIKE ?', "%#{search}%")
+    else
+      Bankslip.all
+    end
+  end
+    
 end
