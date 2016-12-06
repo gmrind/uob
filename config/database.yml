@@ -20,7 +20,7 @@ production:
   username: gmrind
   password: gmrind
   database: onlineforms
-  port: 6543
+  port: 5432
   prepared_statements: false
   pool: 5
   timeout: 5000
