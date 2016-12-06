@@ -17,6 +17,10 @@ test:
 
 production:
   adapter: postgresql
-  database: my_database_production
+  username: gmrind
+  password: gmrind
+  database: onlineforms
+  port: 6543
+  prepared_statements: false
   pool: 5
   timeout: 5000
